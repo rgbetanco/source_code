@@ -17,8 +17,9 @@ class Ads(tk.Tk):
         super().__init__()
         self.title('Videos Promocionales')
         self.geometry('1024x600')
+        self.configure(background=ds.bg_color)
 
-        self.label = tk.Label(self, text='Inserte tarjeta (d) / (r)')
+        self.label = tk.Label(self, text='Inserte tarjeta (d) / (r)', background=ds.bg_color, font=(ds.label_font, ds.label_size))
         self.label.pack(expand=True)
 
         #TODO: Change to read user card

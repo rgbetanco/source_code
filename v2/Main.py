@@ -1,14 +1,20 @@
 import Ads as ads
 import sqlite3
+import Db_API as db
 
-#conn = sqlite3.connect('tarjetas.db')
-#cursor = conn.cursor()
+DB_NAME = 'aguaCero.db'
 
-ads.Ads()
+def main():
+    try:
+        with sqlite3.connect(DB_NAME) as conn:
+            db.create_tarjetas(conn)
+            db.create_transaccions(conn)
+    except sqlite3.Error as e:
+        print(e)
+    finally:
+        conn.close()
 
-#TODO:
-'''
-Crear una base de datos si no existe
-Agregar tablas iniciales, si no existen
-Crear un cursor y propagarlo a la siguiente clase
-'''
+    ads.Ads()
+
+if __name__ == '__main__':
+    main()
